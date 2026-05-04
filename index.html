@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artesanías Angie — Creaciones únicas hechas con amor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:       #D4708A;
+      --rose-light: #F2B8C6;
+      --blush:      #FCE8EE;
+      --cream:      #FFF8F5;
+      --mauve:      #B05470;
+      --brown:      #3D2030;
+      --gray:       #7A6570;
+      --white:      #FFFFFF;
+      --shadow:     0 4px 24px rgba(180, 80, 110, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,248,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rose-light);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--mauve);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--brown);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 64px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 60%, #FDE8D8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,112,138,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242,184,198,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Instagram card */
+    .ig-card {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow), 0 0 0 1px rgba(212,112,138,0.1);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .ig-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--rose-light), var(--blush), #fdd5c0);
+      z-index: -1;
+    }
+
+    .ig-avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 0 0 3px var(--rose-light);
+    }
+
+    .ig-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-top: -8px;
+    }
+
+    .ig-badge svg { width: 12px; height: 12px; fill: white; }
+
+    .ig-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brown);
+      text-align: center;
+    }
+
+    .ig-handle {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: -8px;
+    }
+
+    .ig-stats {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+      justify-content: center;
+      padding: 1rem 0;
+      border-top: 1px solid var(--blush);
+      border-bottom: 1px solid var(--blush);
+    }
+
+    .ig-stat { text-align: center; }
+    .ig-stat strong { display: block; font-size: 1.3rem; color: var(--brown); font-weight: 700; }
+    .ig-stat span { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .ig-bio {
+      font-size: 0.875rem;
+      color: var(--gray);
+      text-align: center;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Mini photo grid */
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .ig-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .ig-grid img:hover { transform: scale(1.04); }
+
+    .ig-follow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 10px 24px;
+      border-radius: 30px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .ig-follow-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* Hero text */
+    .hero-text { }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--mauve);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 30px;
+      box-shadow: 0 4px 16px rgba(212,112,138,0.35);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--mauve);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212,112,138,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--rose);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 30px;
+      border: 2px solid var(--rose-light);
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .btn-secondary:hover {
+      background: var(--blush);
+      border-color: var(--rose);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--mauve);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── SOBRE MÍ ─── */
+    #sobre { background: var(--white); }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .sobre-img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow);
+    }
+
+    .sobre-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+
+    .feature-text span {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    /* ─── PRODUCTOS ─── */
+    #productos { background: var(--cream); }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .producto-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(180,80,110,0.08);
+      border: 1px solid rgba(212,112,138,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .producto-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .producto-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .producto-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+
+    .producto-card p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ─── SERVICIOS ─── */
+    #servicios { background: var(--blush); }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 700px;
+    }
+
+    .servicio-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 2px 16px rgba(180,80,110,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .servicio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .servicio-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--rose-light);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .servicio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown);
+    }
+
+    .servicio-card p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .servicio-badge {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--mauve);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      align-self: flex-start;
+    }
+
+    /* ─── GALERÍA ─── */
+    #galeria { background: var(--white); }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .galeria-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .galeria-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(61,32,48,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .galeria-overlay span {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .galeria-item:hover img { transform: scale(1.05); }
+    .galeria-item:hover .galeria-overlay { opacity: 1; }
+
+    /* ─── CONTACTO ─── */
+    #contacto { background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%); }
+
+    .contacto-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contacto-inner .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contacto-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .contacto-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(180,80,110,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .contacto-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .contacto-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .contacto-icon.whatsapp { background: #E7F5EA; }
+    .contacto-icon.email { background: var(--blush); }
+
+    .contacto-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--brown);
+    }
+
+    .contacto-card p {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .contacto-card .tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: var(--rose-light); }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: var(--rose-light); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2rem 1rem;
+      }
+
+      .hero-text { order: -1; }
+
+      .sobre-grid { grid-template-columns: 1fr; }
+      .sobre-img { display: none; }
+
+      .servicios-grid { grid-template-columns: 1fr; }
+
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+      .contacto-cards { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .productos-grid { grid-template-columns: repeat(2, 1fr); }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Artesanías Angie</span>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#productos">Creaciones</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Instagram Card -->
+    <div class="ig-card">
+      <img class="ig-avatar" src="assets/instagram/profile.jpg" alt="Angeles Arzua" />
+
+      <div class="ig-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </div>
+
+      <p class="ig-name">Angeles Arzua</p>
+      <p class="ig-handle">@artesanias_angie27</p>
+
+      <div class="ig-stats">
+        <div class="ig-stat">
+          <strong>299</strong>
+          <span>Seguidores</span>
+        </div>
+        <div class="ig-stat">
+          <strong>214</strong>
+          <span>Posts</span>
+        </div>
+        <div class="ig-stat">
+          <strong>303</strong>
+          <span>Siguiendo</span>
+        </div>
+      </div>
+
+      <p class="ig-bio">"Creaciones únicas hechas con amor y dedicación ✨🌸"</p>
+
+      <div class="ig-grid">
+        <img src="assets/instagram/post-1.jpg" alt="Creación" />
+        <img src="assets/instagram/post-2.jpg" alt="Creación" />
+        <img src="assets/instagram/post-3.jpg" alt="Creación" />
+        <img src="assets/instagram/post-4.jpg" alt="Creación" />
+        <img src="assets/instagram/post-5.jpg" alt="Creación" />
+        <img src="assets/instagram/post-6.jpg" alt="Creación" />
+      </div>
+
+      <a href="https://www.instagram.com/artesanias_angie27/" target="_blank" class="ig-follow-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Ver en Instagram
+      </a>
+    </div>
+
+    <!-- Hero Text -->
+    <div class="hero-text">
+      <span class="hero-tag">Artesanías únicas</span>
+      <h1>Creaciones hechas<br />con <em>amor y detalle</em></h1>
+      <p>Bisutería, macramé, tazas y llaveros personalizados. Cada pieza es única y nace de mis manos con dedicación. Si lo imaginas, lo creo para ti.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/34630650602?text=Hola%20Angie%2C%20me%20interesan%20tus%20artesanías%20🌸" target="_blank" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <a href="#galeria" class="btn-secondary">Ver mis creaciones</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre">
+  <div class="section-inner sobre-grid">
+    <img class="sobre-img" src="assets/instagram/post-2.jpg" alt="Artesanías Angie" />
+    <div>
+      <span class="section-tag">Sobre mí</span>
+      <h2 class="section-title">Hola, soy Angie<br />y creo con el corazón</h2>
+      <p class="section-subtitle">Me apasiona dar vida a materiales y convertirlos en piezas únicas llenas de significado. Cada creación lleva el tiempo, el cuidado y el amor que merece.</p>
+
+      <div class="sobre-features">
+        <div class="feature">
+          <div class="feature-icon">🧶</div>
+          <div class="feature-text">
+            <strong>Hecho a mano, pieza a pieza</strong>
+            <span>Sin producción en serie. Cada producto es trabajado individualmente con atención al detalle.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <div class="feature-text">
+            <strong>Personalización total</strong>
+            <span>Dime qué necesitas y lo adaptamos a tu gusto: colores, nombres, diseños, tamaños.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-text">
+            <strong>Envío y atención directa</strong>
+            <span>Gestión de pedidos por WhatsApp, rápida y cercana. Sin complicaciones.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎁</div>
+          <div class="feature-text">
+            <strong>Perfectas para regalar</strong>
+            <span>Llaveros, tazas y bisutería personalizados: el regalo que siempre acierta.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="section-inner">
+    <span class="section-tag">Mis creaciones</span>
+    <h2 class="section-title">¿Qué puedo hacer para ti?</h2>
+    <p class="section-subtitle">Una selección de artesanías únicas que puedes pedir con tu toque personal.</p>
+
+    <div class="productos-grid">
+      <div class="producto-card">
+        <span class="producto-icon">💎</span>
+        <h3>Bisutería</h3>
+        <p>Pendientes, pulseras y collares artesanales. Cada pieza diseñada con mimo y materiales de calidad.</p>
+      </div>
+      <div class="producto-card">
+        <span class="producto-icon">🪢</span>
+        <h3>Macramé</h3>
+        <p>Colgantes, portamacetas y decoración en macramé tejida a mano. Estética natural y elegante.</p>
+      </div>
+      <div class="producto-card">
+        <span class="producto-icon">☕</span>
+        <h3>Tazas personalizadas</h3>
+        <p>Con tu nombre, foto o mensaje especial. Perfectas para regalar en cualquier ocasión.</p>
+      </div>
+      <div class="producto-card">
+        <span class="producto-icon">🔑</span>
+        <h3>Llaveros</h3>
+        <p>Personalizados con nombres, formas o mensajes. Pequeños detalles con gran significado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-inner">
+    <span class="section-tag">Cómo trabajamos</span>
+    <h2 class="section-title">Tres formas de conseguir<br />tu pieza ideal</h2>
+    <p class="section-subtitle">Elige la opción que mejor se adapte a ti.</p>
+
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <span class="servicio-num">01</span>
+        <span class="servicio-badge">El más rápido</span>
+        <h3>Pedidos por WhatsApp</h3>
+        <p>Escríbeme directamente por WhatsApp, cuéntame qué quieres y te doy precio y plazo de entrega en minutos.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="servicio-num">02</span>
+        <span class="servicio-badge">100% personalizado</span>
+        <h3>Encargos a medida</h3>
+        <p>¿Tienes algo concreto en mente? Lo diseñamos juntos desde cero. Colores, tamaño, materiales: tú decides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="section-inner">
+    <span class="section-tag">Galería</span>
+    <h2 class="section-title">Mis últimas creaciones</h2>
+    <p class="section-subtitle">Una muestra de lo que puedo hacer. Cada pieza es única.</p>
+
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <img src="assets/instagram/post-1.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-2.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-3.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-4.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-5.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-6.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-7.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-8.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+      <div class="galeria-item">
+        <img src="assets/instagram/post-9.jpg" alt="Creación artesanal" />
+        <div class="galeria-overlay"><span>Ver más en Instagram</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner contacto-inner">
+    <span class="section-tag">Contacto</span>
+    <h2 class="section-title">¿Hablamos?</h2>
+    <p class="section-subtitle">Cuéntame qué tienes en mente y creamos algo único juntos. Respondo en menos de 24h.</p>
+
+    <div class="contacto-cards">
+      <a href="https://wa.me/34630650602?text=Hola%20Angie%2C%20me%20interesan%20tus%20artesanías%20🌸" target="_blank" class="contacto-card">
+        <div class="contacto-icon whatsapp">💬</div>
+        <h3>WhatsApp</h3>
+        <p>+34 630 65 06 02</p>
+        <span class="tag">Escríbeme ahora →</span>
+      </a>
+      <a href="mailto:angelesarzua@gmail.com" class="contacto-card">
+        <div class="contacto-icon email">✉️</div>
+        <h3>Email</h3>
+        <p>angelesarzua@gmail.com</p>
+        <span class="tag">Enviar email →</span>
+      </a>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="https://www.instagram.com/artesanias_angie27/" target="_blank" class="btn-primary" style="margin: 0 auto; display: inline-flex;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Seguir en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Artesanías Angie</strong> · Hecho con amor ✨</p>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/artesanias_angie27/" target="_blank">@artesanias_angie27</a>
+    <a href="mailto:angelesarzua@gmail.com">angelesarzua@gmail.com</a>
+    <a href="https://wa.me/34630650602" target="_blank">+34 630 65 06 02</a>
+  </div>
+</footer>
+
+</body>
+</html>
